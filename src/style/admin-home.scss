@@ -1,0 +1,204 @@
+.admin-home-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .user-status__results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.admin-home {
+  &__welcome-message {
+    color: #6BD35F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    padding-left: 200px;
+  }
+
+  &__page-name {
+    color: #6BD35F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    padding-left: 200px;
+  }
+}
+
+.page-titler-and-selector {
+  display: flex;
+  justify-items: space-between;
+
+  &__page-titler {
+    color: #6BD35F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    padding-left: 200px;
+  }
+}
+
+.save-changes-wrapper {
+  display: flex;
+  align-items: center;
+}
+.save-changes-button {
+  color: #6BD35F;
+  font-weight: 700;
+  font-size: 64px;
+  margin-right: 10px;
+
+  &__description {
+    color: #6BD35F;
+    font-weight: 700;
+    font-size: 32px;
+  }
+}
+
+// .user-status__results {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.user-not-found {
+  color: #6BD35F;
+  font-weight: 700;
+  font-size: 64px;
+}
+
+@media screen and (max-width: 1180px) and (orientation: landscape) {
+  .admin-home {
+    &__welcome-message {
+      color: #6BD35F;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      padding-left: 20px;
+    }
+  
+    &__page-name {
+      padding-left: 20px;
+    }
+  }
+  
+  .page-titler-and-selector {
+    display: flex;
+    justify-items: space-between;
+
+    &__page-titler {
+      color: #6BD35F;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      padding-left: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 1180px) and (orientation: portrait) {
+  .user-status__user-profile-component {
+    width: 800px;
+  }
+  
+  .admin-home {
+  &__welcome-message {
+    color: #6BD35F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    padding-left: 20px;
+  }
+
+  &__page-name {
+    padding-left: 20px;
+  }
+}
+
+  .page-titler-and-selector {
+    display: flex;
+    justify-items: space-between;
+
+    &__page-titler {
+      color: #6BD35F;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      padding-left: 20px;
+    }
+  }
+
+  .save-changes-button {
+    display: flex;
+    color: #6BD35F;
+    font-weight: 700;
+    font-size: 48px;
+    margin-right: 10px;
+  
+    &__description {
+      color: #6BD35F;
+      font-weight: 700;
+      font-size: 32px;
+    }
+  }
+
+  .user-not-found {
+    display: flex;
+    justify-content: center;
+    color: #6BD35F;
+    font-weight: 700;
+    font-size: 64px;
+  }
+}
+
+// below code left in for future versions
+  // .admin-home__management-tools {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   align-content: center;
+  //   color: #FFFFFF;
+  //   font-size: 28px;
+  //   border-radius: 10px;
+  //   text-decoration: none;
+  //   margin-top: 200px;
+  //   // padding: 25px;
+  
+  //   &__users {
+  //     background-color: #6BD35F;
+  //   }
+
+  //   &__passwords {
+  //     // grid-column: col2-s/col2-e;
+  //     // grid-row: row1-s/row1-e;
+  //     // justify-content: space-around;
+  //     // align-items: center;
+  //     color: #FFFFFF;
+  //     background-color: #6BD35F;
+  //     font-size: 28px;
+  //     border-radius: 10px;
+  //     // height: 75px;
+  //     // width: 175px;
+  //     background-color: #6BD35F;
+  //     text-decoration: none;
+  //     // padding: 25px;
+  //   }
+
+  //   &__placeholder {
+  //     // grid-column: col3-s/col3-e;
+  //     // grid-row: row1-s/row1-e;
+  //     // justify-content: space-around;
+  //     // align-items: center;
+  //     color: #FFFFFF;
+  //     font-size: 28px;
+  //     border-radius: 10px;
+  //     // height: 75px;
+  //     // width: 175px;
+  //     background-color: #6BD35F;
+  //     text-decoration: none;
+  //     // padding: 25px;
+  //     }
+  //   }
+  // }

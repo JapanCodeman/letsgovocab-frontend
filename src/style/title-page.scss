@@ -1,0 +1,40 @@
+.title-page-wrapper {
+  display: grid;
+  grid-template-columns: [left-s] 1fr [left-e mid-s] 1fr [mid-e right-s] 1fr [right-e];
+  grid-template-rows: [text-s] 1fr [text-e logo-s] 2fr [logo-e buttons-s] 200px [buttons-e];
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+
+  .title-page-text {
+    display: grid;
+    grid-column: mid-s/mid-e;
+    grid-row: text-s/text-e;
+    font-weight: 700;
+    font-size: 24px;
+    justify-content: center;
+    text-align: center;
+    color: #6BD35F;
+  }
+  .title-page-logo {
+    display: grid;
+    grid-column: mid-s/mid-e;
+    grid-row: logo-s/logo-e;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      max-height: auto;
+    }
+  }
+  .button-wrapper {
+    grid-column: mid-s/mid-e;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+  }
+}
+
+

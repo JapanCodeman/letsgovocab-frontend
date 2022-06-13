@@ -1,0 +1,66 @@
+.student-home__agenda {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin-left: 200px;
+  font-size: 48px;
+}
+
+.student-home-button-wrapper, a {
+  display: flex;
+  justify-content: center;
+
+    &__green-button-study, &__green-button-view-sets {
+      color: #fff;
+      background-color: green;
+      text-decoration: none;
+      width: 300px;
+      height: 300px;
+      margin-top: 40px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      border-radius: 10px;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      margin: 20px;
+      transition: 0.3s;
+
+        &:hover {
+          background-color: #349429;
+    }
+  }
+}
+
+
+.explanations-wrapper {
+display: flex;
+justify-content: center;
+align-content: space-between;
+flex-direction: row;
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+font-size: 24px;
+margin-right: 50px;
+
+  &__study {
+    color: green;
+    text-align: right;
+    width: 500px;
+    margin-left: 50px;
+    transition: 0.3s;
+    }
+
+
+  &__view-sets {
+    color: green;
+    width: 500px;
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 1180px) and (orientation: portrait) {
+  .student-home__agenda {
+    margin-left: 20px;
+  }
+}

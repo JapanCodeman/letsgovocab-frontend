@@ -1,0 +1,51 @@
+html {
+    font-size: 62.5%; // 1rem is 10px
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: 'montserrat';
+}
+
+body {
+    overflow-x: hidden;
+    font-weight: normal;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+    margin-top: 2rem;
+    display: grid;
+    justify-items: center;
+}
+
+// @import 'admin-login.scss';
+@import 'admin-home.scss';
+@import 'admin-user-status.scss';
+@import 'create-card.scss';
+@import 'create-cards.scss';
+@import 'edit-cards.scss';
+@import 'green-button.scss';
+@import 'header-navbar.scss';
+@import 'instructor-home.scss';
+@import 'loading-page.scss';
+@import 'modify-cards.scss';
+@import 'page-not-found.scss';
+@import 'page-titler.scss';
+@import 'view-sets.scss';
+@import 'student-home.scss';
+@import 'study.scss';
+@import 'study-card.scss';
+@import 'test.scss';
+@import 'title-page.scss';
+@import 'user-profile.scss';
+@import 'register.scss';
+@import 'login.scss';
