@@ -61,7 +61,7 @@ checkLoginStatus() {
         }
       }
     axios
-    .get(`http://127.0.0.1:5000/user-by-email/${email}`, config)
+    .get(`https://letsgovocab-backend.herokuapp.com/user-by-email/${email}`, config)
     .then(response => {
       this.setState({
         loggedInStatus: "LOGGED_IN",
@@ -91,7 +91,7 @@ handleLogin(email) {
       }
     }      
   axios
-  .get(`http://127.0.0.1:5000/user-by-email/${email}`, config)
+  .get(`https://letsgovocab-backend.herokuapp.com/user-by-email/${email}`, config)
   .then(response => {
     this.setState({
     loggedInStatus: "LOGGED_IN",
@@ -116,7 +116,7 @@ handleLogout() {
       "Authorization" : `Bearer ${token}`
       }
     }
-  axios.patch(`http://127.0.0.1:5000/update-user-by-email/${userEmail}`, { logged_in: "false" }, config)
+  axios.patch(`https://letsgovocab-backend.herokuapp.com/update-user-by-email/${userEmail}`, { logged_in: "false" }, config)
   .catch(error => {
     console.log("Patch log status error", error)
   })

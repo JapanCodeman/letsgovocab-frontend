@@ -29,11 +29,11 @@ export default class AdministratorHome extends Component {
     var token = window.sessionStorage.getItem("token")
     const decoded = jwtDecode(token) 
     const adminEmail = decoded.sub.email
-    axios.patch(`http://127.0.0.1:5000/update-user-by-email/${adminEmail}`, { logged_in:"true" }, { headers: {"Authorization" : `Bearer ${token}`}})
+    axios.patch(`https://letsgovocab-backend.herokuapp.com/update-user-by-email/${adminEmail}`, { logged_in:"true" }, { headers: {"Authorization" : `Bearer ${token}`}})
     .catch(error => {
       console.log("Patch log status error", error)
     })
-    axios.get(`http://127.0.0.1:5000/user-by-email/${adminEmail}`, { headers: {"Authorization" : `Bearer ${token}`}})
+    axios.get(`https://letsgovocab-backend.herokuapp.com/user-by-email/${adminEmail}`, { headers: {"Authorization" : `Bearer ${token}`}})
     .then (Admin => {
       this.setState({
         admin : Admin.data
@@ -52,7 +52,7 @@ export default class AdministratorHome extends Component {
   getUsers() {
     if (this.state.searchParams === "Instructors") {
       axios
-      .get('http://127.0.0.1:5000/instructors')
+      .get('https://letsgovocab-backend.herokuapp.com/instructors')
       .then(response => {
         this.setState({
           users: [...response.data],
@@ -64,7 +64,7 @@ export default class AdministratorHome extends Component {
       })
     } else if (this.state.searchParams === "Administrators") {
       axios
-      .get('http://127.0.0.1:5000/administrators')
+      .get('https://letsgovocab-backend.herokuapp.com/administrators')
       .then(response => {
         this.setState({
           users: [...response.data],
@@ -76,7 +76,7 @@ export default class AdministratorHome extends Component {
       })
     } else {
     axios
-    .get(`http://127.0.0.1:5000/users-by-course/${this.state.searchParams}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/users-by-course/${this.state.searchParams}`)
     .then(response => {
       this.setState({
         users: [...response.data],

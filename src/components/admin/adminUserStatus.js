@@ -25,7 +25,7 @@ export default class UserStatus extends Component {
   getUsers() {
     if (this.state.searchParams === "Instructors") {
       axios
-      .get('http://127.0.0.1:5000/instructors')
+      .get('https://letsgovocab-frontend.herokuapp.com/instructors')
       .then(response => {
         this.setState({
           users: [...response.data]
@@ -36,7 +36,7 @@ export default class UserStatus extends Component {
       })
     } else if (this.state.searchParams === "Administrators") {
       axios
-      .get('http://127.0.0.1:5000/administrators')
+      .get('https://letsgovocab-frontend.herokuapp.com/administrators')
       .then(response => {
         this.setState({
           users: [...response.data]
@@ -47,7 +47,7 @@ export default class UserStatus extends Component {
       })
     } else {
     axios
-    .get(`http://127.0.0.1:5000/users-by-course/${this.state.searchParams}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/users-by-course/${this.state.searchParams}`)
     .then(response => {
       this.setState({
         users: [...response.data]

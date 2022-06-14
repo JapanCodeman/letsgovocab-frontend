@@ -28,7 +28,7 @@ export default class AdministratorLogin extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
-    axios.get(`http://127.0.0.1:5000/user-by-email/${this.state.email}`)
+    axios.get(`https://letsgovocab-frontend.herokuapp.com/user-by-email/${this.state.email}`)
     .then(response => {
       this.setState({
         user: [...response.data]
@@ -37,7 +37,7 @@ export default class AdministratorLogin extends Component {
     .catch(error => {
       console.log("There was an error", error)
     })
-    axios.post('http://127.0.0.1:5000/login',
+    axios.post('https://letsgovocab-frontend.herokuapp.com/login',
     {
       "email": this.state.email,
       "password": this.state.password

@@ -22,7 +22,7 @@ export default class ModifyCards extends Component {
     const email = decoded.sub.email
 
     // axios
-    // .get(`http://127.0.0.1:5000/user-email/${email}`)
+    // .get(`https://letsgovocab-frontend.herokuapp.com/user-email/${email}`)
     // .then(response => {
     //   this.setState({
     //     ...response.data
@@ -33,7 +33,7 @@ export default class ModifyCards extends Component {
     //   "There was an error", error
     // })
     axios
-    .get(`http://127.0.0.1:5000/sets-by-instructor/${email}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/sets-by-instructor/${email}`)
     .then(response =>
       this.setState({
       cards: [...response.data]
@@ -47,7 +47,7 @@ export default class ModifyCards extends Component {
   // get this instructor's card sets
   // getCards() {
   //   axios
-  //   .get(`http://127.0.0.1:5000/sets-by-instructor/${this.state.email}`)
+  //   .get(`https://letsgovocab-frontend.herokuapp.com/sets-by-instructor/${this.state.email}`)
   //   .then(response =>
   //     this.setState({
   //     cards: [...response.data]

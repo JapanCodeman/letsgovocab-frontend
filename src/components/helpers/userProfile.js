@@ -27,7 +27,7 @@ export default class UserProfile extends Component {
         'Access-Control-Allow-Origin': '*'
         }
       }
-    axios.patch(`http://127.0.0.1:5000/update-user/${id}`, JSON.stringify(data), config)
+    axios.patch(`https://letsgovocab-frontend.herokuapp.com/update-user/${id}`, JSON.stringify(data), config)
     .catch(error => {
       console.log("There was an error with the patch request to instructor", error)
     })
