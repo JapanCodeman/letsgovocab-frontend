@@ -27,7 +27,7 @@ export default class ViewSets extends Component {
         "Authorization" : `Bearer ${token}`
         }
       }
-    await axios.get(`https://letsgovocab-frontend.herokuapp.com/user-email/${userEmail}`, config)
+    await axios.get(`https://letsgovocab-backend.herokuapp.com/user-email/${userEmail}`, config)
     .then (user => {
       this.setState({...user.data}
     )  
@@ -37,7 +37,7 @@ export default class ViewSets extends Component {
     })
 
     await axios
-    .get(`https://letsgovocab-frontend.herokuapp.com/cards-by-course/${this.state.course}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/cards-by-course/${this.state.course}`)
     .then (response => {
       this.setState({sets : [...response.data]})
     })

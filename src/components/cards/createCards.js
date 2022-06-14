@@ -69,7 +69,7 @@ export default class CreateCards extends Component {
 
   handleUploadCards(cards) {
     axios
-    .post('https://letsgovocab-frontend.herokuapp.com/create-cards', [...cards])
+    .post('https://letsgovocab-backend.herokuapp.com/create-cards', [...cards])
     .then(response => {
       if (response.status === 200) return response
       else alert("There was an error")})

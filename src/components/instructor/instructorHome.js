@@ -20,7 +20,7 @@ export default class InstructorHome extends Component {
     var decoded = jwtDecode(token)
     const userEmail = decoded.sub.email
     axios
-    .get(`https://letsgovocab-frontend.herokuapp.com/user-by-email/${userEmail}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/user-by-email/${userEmail}`)
     .then(user => {
       this.setState({...user.data})
     })
