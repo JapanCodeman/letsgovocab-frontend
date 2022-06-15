@@ -41,7 +41,7 @@ export default class Register extends Component {
   
   async handleSubmit(event) {
     if (this.state.role === "Student") {
-    await axios.post('https://letsgovocab-frontend.herokuapp.com/register-student',
+    await axios.post('https://letsgovocab-backend.herokuapp.com/register-student',
     {
       "first": this.state.first,
       "last": this.state.last,
@@ -61,7 +61,7 @@ export default class Register extends Component {
     this.props.history.push("/login")
     // event.preventDefault();
   } else {
-    axios.post('https://letsgovocab-frontend.herokuapp.com/register-instructor/',
+    axios.post('https://letsgovocab-backend.herokuapp.com/register-instructor/',
     {
       "first": this.state.first,
       "last": this.state.last,

@@ -26,7 +26,7 @@ export default class UserStatus extends Component {
   getUsers() {
     if (this.state.searchParams === "Instructors") {
       axios
-      .get('https://letsgovocab-frontend.herokuapp.com/instructors')
+      .get('https://letsgovocab-backend.herokuapp.com/instructors')
       .then(response => {
         this.setState({
           users: [...response.data]
@@ -37,7 +37,7 @@ export default class UserStatus extends Component {
       })
     } else if (this.state.searchParams === "Administrators") {
       axios
-      .get('https://letsgovocab-frontend.herokuapp.com/administrators')
+      .get('https://letsgovocab-backend.herokuapp.com/administrators')
       .then(response => {
         this.setState({
           users: [...response.data]
@@ -48,7 +48,7 @@ export default class UserStatus extends Component {
       })
     } else {
     axios
-    .get(`https://letsgovocab-frontend.herokuapp.com/users-by-course/${this.state.searchParams}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/users-by-course/${this.state.searchParams}`)
     .then(response => {
       this.setState({
         users: [...response.data]

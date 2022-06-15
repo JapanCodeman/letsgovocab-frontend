@@ -29,7 +29,7 @@ export default class StudySet extends Component {
     const decoded = jwtDecode(token)
     const email = decoded.sub.email
     await axios
-    .get(`https://letsgovocab-frontend.herokuapp.com/student-email/${email}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/student-email/${email}`)
     .then(response => {
       this.setState({
         ...response.data
@@ -40,7 +40,7 @@ export default class StudySet extends Component {
     })
 
     await axios
-    .get(`https://letsgovocab-frontend.herokuapp.com/card-public-id-by-setname/${studySet}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/card-public-id-by-setname/${studySet}`)
     .then(response => {
       this.setState({
         set: [...response.data],
@@ -52,7 +52,7 @@ export default class StudySet extends Component {
 
   handleLoadCard() {
     axios
-    .get(`https://letsgovocab-frontend.herokuapp.com/get-card-by-id/${this.state.set[this.state.card_number]}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/get-card-by-id/${this.state.set[this.state.card_number]}`)
     .then(response => 
       this.setState({cards : [response.data]}))
     .catch(error => ("There was an error loading the card", error))
@@ -70,7 +70,7 @@ export default class StudySet extends Component {
       card_number: num
   })
     axios
-    .get(`https://letsgovocab-frontend.herokuapp.com/get-card-by-id/${this.state.set[this.state.card_number]}`)
+    .get(`https://letsgovocab-backend.herokuapp.com/get-card-by-id/${this.state.set[this.state.card_number]}`)
     .then(response => 
       this.setState({cards : [response.data]}))
   }
