@@ -29,7 +29,7 @@ export default class StudentStudy extends Component {
     const decoded = jwtDecode(token)
     const email = decoded.sub.email
     await axios
-    .get(`http://letsgovocab-frontend.herokuapp.com/student-email/${email}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/student-email/${email}`)
     .then(response => {
       this.setState({
         ...response.data
@@ -39,7 +39,7 @@ export default class StudentStudy extends Component {
       console.log("Error in retrieving user info on component mount", error)
     })
     await axios
-    .get(`http://letsgovocab-frontend.herokuapp.com/get-new-cards/${this.state.course}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/get-new-cards/${this.state.course}`)
     .then(response => {
       response.data.forEach(id => {
         if (!this.state.full_card_collection.includes(id)) {
@@ -60,7 +60,7 @@ export default class StudentStudy extends Component {
     }
     
     await axios
-    .patch(`http://letsgovocab-frontend.herokuapp.com/update-user/${this.state._id}`, 
+    .patch(`https://letsgovocab-frontend.herokuapp.com/update-user/${this.state._id}`, 
     {
       vocabulary_box_one : this.state.vocabulary_box_one,
       full_card_collection : this.state.full_card_collection
@@ -77,7 +77,7 @@ export default class StudentStudy extends Component {
 
   handleLoadCard() {
     axios
-    .get(`http://letsgovocab-frontend.herokuapp.com/get-card-by-id/${this.state.full_card_collection[this.state.card_number]}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/get-card-by-id/${this.state.full_card_collection[this.state.card_number]}`)
     .then(response => 
       this.setState({
         cards : [response.data],
@@ -95,7 +95,7 @@ export default class StudentStudy extends Component {
       card_number: num
   })
     axios
-    .get(`http://letsgovocab-frontend.herokuapp.com/get-card-by-id/${this.state.full_card_collection[this.state.card_number]}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/get-card-by-id/${this.state.full_card_collection[this.state.card_number]}`)
     .then(response => 
       this.setState({cards : [response.data]}))
   }

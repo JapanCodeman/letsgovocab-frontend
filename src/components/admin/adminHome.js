@@ -31,11 +31,11 @@ export default class AdministratorHome extends Component {
     var token = window.sessionStorage.getItem("token")
     const decoded = jwtDecode(token) 
     const adminEmail = decoded.sub.email
-    axios.patch(`http://letsgovocab-frontend.herokuapp.com/update-user-by-email/${adminEmail}`, { logged_in:"true" }, { headers: {"Authorization" : `Bearer ${token}`}})
+    axios.patch(`https://letsgovocab-frontend.herokuapp.com/update-user-by-email/${adminEmail}`, { logged_in:"true" }, { headers: {"Authorization" : `Bearer ${token}`}})
     .catch(error => {
       console.log("Patch log status error", error)
     })
-    axios.get(`http://letsgovocab-frontend.herokuapp.com/user-by-email/${adminEmail}`, { headers: {"Authorization" : `Bearer ${token}`}})
+    axios.get(`https://letsgovocab-frontend.herokuapp.com/user-by-email/${adminEmail}`, { headers: {"Authorization" : `Bearer ${token}`}})
     .then (Admin => {
       this.setState({
         admin : Admin.data
@@ -57,7 +57,7 @@ export default class AdministratorHome extends Component {
     })
     if (this.state.searchParams === "Instructors") {
       axios
-      .get('http://letsgovocab-frontend.herokuapp.com/instructors')
+      .get('https://letsgovocab-frontend.herokuapp.com/instructors')
       .then(response => {
         this.setState({
           users: [...response.data],
@@ -73,7 +73,7 @@ export default class AdministratorHome extends Component {
         isLoading: true
       })
       axios
-      .get('http://letsgovocab-frontend.herokuapp.com/administrators')
+      .get('https://letsgovocab-frontend.herokuapp.com/administrators')
       .then(response => {
         this.setState({
           users: [...response.data],
@@ -89,7 +89,7 @@ export default class AdministratorHome extends Component {
         isLoading: true
       })
     axios
-    .get(`http://letsgovocab-frontend.herokuapp.com/users-by-course/${this.state.searchParams}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/users-by-course/${this.state.searchParams}`)
     .then(response => {
       this.setState({
         users: [...response.data],

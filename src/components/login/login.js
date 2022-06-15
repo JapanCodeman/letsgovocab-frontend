@@ -29,7 +29,7 @@ export default class Login extends Component {
   
   handleSubmit(event) {
     event.preventDefault(); 
-      axios.post('http://letsgovocab-frontend.herokuapp.com/login',
+      axios.post('https://letsgovocab-frontend.herokuapp.com/login',
       {
         "email": this.state.email,
         "password": this.state.password

@@ -27,11 +27,11 @@ export default class Home extends Component {
         "Authorization" : `Bearer ${token}`
         }
       }
-    await axios.patch(`http://letsgovocab-frontend.herokuapp.com/update-user-by-email/${userEmail}`, { logged_in: "true" }, config)
+    await axios.patch(`https://letsgovocab-frontend.herokuapp.com/update-user-by-email/${userEmail}`, { logged_in: "true" }, config)
     .catch(error => {
       console.log("Patch log status error", error)
     })
-    await axios.get(`http://letsgovocab-frontend.herokuapp.com/user-email/${userEmail}`, config)
+    await axios.get(`https://letsgovocab-frontend.herokuapp.com/user-email/${userEmail}`, config)
     .then (user => {
       this.setState({
         ...user.data}
@@ -41,9 +41,9 @@ export default class Home extends Component {
       console.log("Error in getting user object", error);
     })
     await axios
-    .get(`http://letsgovocab-frontend.herokuapp.com/get-new-cards/${this.state.user.course}`)
+    .get(`https://letsgovocab-frontend.herokuapp.com/get-new-cards/${this.state.user.course}`)
     .then(response => {
-      axios.patch(`http://letsgovocab-frontend.herokuapp.com/update-user-by-email/${userEmail}`, { full_card_collection : response.data }, config)
+      axios.patch(`https://letsgovocab-frontend.herokuapp.com/update-user-by-email/${userEmail}`, { full_card_collection : response.data }, config)
       .catch(error => {
         console.log("Error updating full card collection", error)
       })
