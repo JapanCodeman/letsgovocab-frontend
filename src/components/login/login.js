@@ -29,7 +29,7 @@ export default class Login extends Component {
   
   handleSubmit(event) {
     event.preventDefault(); 
-      axios.post('https://letsgovocab-backend.herokuapp.com/login',
+      axios.post('http://letsgovocab-frontend.herokuapp.com/login',
       {
         "email": this.state.email,
         "password": this.state.password
@@ -57,7 +57,8 @@ export default class Login extends Component {
         }
       })
       .catch(error => {
-        if (error.response.status === 401) {
+        console.log(error)
+        if (error.response === 401) {
           this.setState({
             userOrPassIncorrect: true
           })

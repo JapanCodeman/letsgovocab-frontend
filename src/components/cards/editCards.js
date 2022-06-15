@@ -20,7 +20,7 @@ export default class EditCards extends Component {
 
   getCards() {
     axios
-    .get(`https://letsgovocab-backend.herokuapp.com/cards-by-setname/${this.state.set_name}`)
+    .get(`http://letsgovocab-frontend.herokuapp.com/cards-by-setname/${this.state.set_name}`)
     .then(response => {
       this.setState({
         cards: [...response.data]
@@ -37,7 +37,7 @@ export default class EditCards extends Component {
 
   handleUpdateCard(updateData, id) {
     axios
-    .patch(`https://letsgovocab-backend.herokuapp.com/update-card/${id}`, updateData)
+    .patch(`http://letsgovocab-frontend.herokuapp.com/update-card/${id}`, updateData)
     .catch(error => {
       "There was an error updating the card", error
     })
@@ -45,7 +45,7 @@ export default class EditCards extends Component {
 
   handleDeleteSet() {
     axios
-    .delete(`https://letsgovocab-backend.herokuapp.com/delete-card-set/${this.state.set_name}`)
+    .delete(`http://letsgovocab-frontend.herokuapp.com/delete-card-set/${this.state.set_name}`)
     .catch(error => {
       "Error in handleDeleteSet function in editCards.js", error
     })

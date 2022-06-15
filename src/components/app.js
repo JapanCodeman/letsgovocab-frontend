@@ -53,15 +53,8 @@ checkLoginStatus() {
     var token = window.sessionStorage.getItem("token")
     const decoded = jwtDecode(token)
     const email = decoded.sub.email
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
-        "Authorization" : `Bearer ${token}`
-        }
-      }
     axios
-    .get(`https://letsgovocab-backend.herokuapp.com/user-by-email/${email}`, config)
+    .get(`http://letsgovocab-frontend.herokuapp.com/user-by-email/${email}`)
     .then(response => {
       this.setState({
         loggedInStatus: "LOGGED_IN",
@@ -91,7 +84,7 @@ handleLogin(email) {
       }
     }      
   axios
-  .get(`https://letsgovocab-backend.herokuapp.com/user-by-email/${email}`, config)
+  .get(`http://letsgovocab-frontend.herokuapp.com/user-by-email/${email}`, config)
   .then(response => {
     this.setState({
     loggedInStatus: "LOGGED_IN",
@@ -103,12 +96,16 @@ handleLogin(email) {
   .catch(error => {
     console.log("There was an error in App.js with the handleLogin function", error)
   })
+  axios.patch(`http://letsgovocab-frontend.herokuapp.com/update-user-by-email/${email}`, { logged_in: "true" }, config)
+  .catch(error => {
+    console.log("Patch log status error", error)
+  })
 }
 
 handleLogout() {
   var token = window.sessionStorage.getItem("token")
   const decoded = jwtDecode(token) 
-  const userEmail = decoded.sub.email
+  const email = decoded.sub.email
   let config = {
     headers: {
       "Content-Type": "application/json",
@@ -116,7 +113,7 @@ handleLogout() {
       "Authorization" : `Bearer ${token}`
       }
     }
-  axios.patch(`https://letsgovocab-backend.herokuapp.com/update-user-by-email/${userEmail}`, { logged_in: "false" }, config)
+  axios.patch(`http://letsgovocab-frontend.herokuapp.com/update-user-by-email/${email}`, { logged_in: "false" }, config)
   .catch(error => {
     console.log("Patch log status error", error)
   })
@@ -182,10 +179,7 @@ studentAuthorizedPages() {
               {this.state.role === "Administrator" ? (
                 this.adminAuthorizedPages()) :
                 null}
-
             <Route path="*" component={PageNotFound} />
-            {/* <Route path='/404' component={PageNotFound} />
-            <Redirect to="/404" /> */}
           </Switch>
         </Router>
       </div>

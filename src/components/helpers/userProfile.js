@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
+import DialogBox from '../modals/dialogBoxModal';
+
 export default class UserProfile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      dialogBoxOpen: false
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleModalOpen = this.handleModalOpen.bind(this)
+    this.handleModalClose = this.handleModalClose.bind(this)
     this.saveChanges = this.saveChanges.bind(this)
-    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange(event) {
@@ -27,21 +31,30 @@ export default class UserProfile extends Component {
         'Access-Control-Allow-Origin': '*'
         }
       }
-    axios.patch(`https://letsgovocab-backend.herokuapp.com/update-user/${id}`, JSON.stringify(data), config)
+    axios.patch(`http://letsgovocab-frontend.herokuapp.com/update-user/${id}`, JSON.stringify(data), config)
     .catch(error => {
       console.log("There was an error with the patch request to instructor", error)
     })
-    // window.alert("Changes saved, confirm with new search")
+    this.handleModalOpen()
   }
 
-  handleClick = value => () => {
-    console.log(value);
-  };
+  handleModalOpen() {
+    this.setState({
+      dialogBoxOpen: true
+    })
+  }
+
+  handleModalClose() {
+    this.setState({
+      dialogBoxOpen: false
+    })
+  }
 
   render () {
     return (
       <div>
         <div className="user-profile-page-wrapper">
+        <DialogBox text="Changes uploaded and saved to database. Please confirm changes with another search." modalIsOpen={this.state.dialogBoxOpen} handleModalClose={this.handleModalClose}/>
           <label className="user-profile-info__first-name-label" htmlFor="first-name">First Name</label>
             <input className="user-profile-info__first-name" defaultValue={this.props.first} name="first" onChange={this.handleChange} />
           <label className="user-profile-info__last-name-label" htmlFor="last-name">Last Name</label>

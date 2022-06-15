@@ -11,7 +11,8 @@ export default class InstructorHome extends Component {
   super(props) 
     
     this.state = {
-      first: ""
+      first: "",
+      isLoading: true
     }
   }
 
@@ -20,7 +21,7 @@ export default class InstructorHome extends Component {
     var decoded = jwtDecode(token)
     const userEmail = decoded.sub.email
     axios
-    .get(`https://letsgovocab-backend.herokuapp.com/user-by-email/${userEmail}`)
+    .get(`http://letsgovocab-frontend.herokuapp.com/user-by-email/${userEmail}`)
     .then(user => {
       this.setState({...user.data})
     })
@@ -30,9 +31,10 @@ export default class InstructorHome extends Component {
   }
 
   render () {
+   
     return (
       <div className='instructor-home'>
-        {this.state.first === "" ? <LoadingPage /> : null }
+        {this.state.first === "" && this.state.isLoading ? <LoadingPage /> : null }
         <PageTitler className='instructor-home__title' title={'Instructor Home'}/> 
         <PageTitler className='instructor-home__welcome-back' title={`Welcome back, ${this.state.first}!`}/>
         <div className='instructor-home__green-button-links'>
