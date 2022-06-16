@@ -16,4 +16,6 @@ Utilized Technologies
 
 Known Issues
 
-  As mentioned, this app is a work in progress. While it should meet the requirements for Bottega's Full Stack course as a final project, there are plans to develop this app further. As such, there may be lines of commented code that were purposefully left in for future development. 
+  As mentioned, this app is a work in progress. While it should meet the requirements for Bottega's Full Stack course as a final project, there are plans to develop this app further. As such, there may be lines of commented code that were purposefully left in for future development. These can be disregarded for now.
+
+  Additionally, there is an issue with media queries and Chrome. Chrome sometimes does not render the proper media query when in "iPad Air" mode (this is the iPad model used by students). Upon loading on test iPads, however, the media queries function properly. 
