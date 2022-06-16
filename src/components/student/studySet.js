@@ -47,18 +47,17 @@ export default class StudySet extends Component {
         isLoading: false
       })
     })
-    this.handleLoadNextCard()
+    this.handleLoadCard()
   }
 
   handleLoadCard() {
     axios
     .get(`https://letsgovocab-backend.herokuapp.com/get-card-by-id/${this.state.set[this.state.card_number]}`)
     .then(response => 
-      this.setState({cards : [response.data]}))
+      this.setState({
+        card_number: this.state.card_number + 1,
+        cards : [response.data]}))
     .catch(error => ("There was an error loading the card", error))
-    this.setState({
-      card_number : card_number + 1
-    })
   }
 
   handleLoadNextCard() {

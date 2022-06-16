@@ -80,6 +80,7 @@ export default class StudentStudy extends Component {
     .get(`https://letsgovocab-backend.herokuapp.com/get-card-by-id/${this.state.full_card_collection[this.state.card_number]}`)
     .then(response => 
       this.setState({
+        card_number: this.state.card_number + 1,
         cards : [response.data],
         isLoading: false
       }))
@@ -93,7 +94,7 @@ export default class StudentStudy extends Component {
     }
     this.setState({
       card_number: num
-  })
+    })
     axios
     .get(`https://letsgovocab-backend.herokuapp.com/get-card-by-id/${this.state.full_card_collection[this.state.card_number]}`)
     .then(response => 

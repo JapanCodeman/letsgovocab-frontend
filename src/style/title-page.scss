@@ -37,4 +37,20 @@
   }
 }
 
+@media screen and (max-width: 1180px) and (orientation: landscape) {
+  .title-page-wrapper {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    grid-template-rows: [text-s] auto [text-e logo-s] 2fr [logo-e buttons-s] auto [buttons-e];
+  }
 
+}
+
+@media screen and (width: 1180px) and (orientation: portrait) {
+  .title-page-wrapper {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    grid-template-rows: [text-s] 100px [text-e logo-s] 2fr [logo-e buttons-s] 100px [buttons-e];
+    margin-top: 50px;
+  }
+}
