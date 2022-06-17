@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import EditCard from './editCard';
 import PageTitler from '../helpers/pageTitler';
+import LoadingPage from '../helpers/loadingPage';
 
 export default class EditCards extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isLoading: true,
       set_name: this.props.match.params.slug,
       cards: []
     }
@@ -28,6 +30,9 @@ export default class EditCards extends Component {
     })
     .catch(error => {
       console.log("There was an error getting the cards", error)
+    })
+    this.setState({
+      isLoading: false
     })
   }
 
@@ -56,6 +61,7 @@ export default class EditCards extends Component {
   render () {
     return (
       <div>
+        { this.state.isLoading === true ? <LoadingPage /> : null }
         <PageTitler className='page-titler' title="Edit Cards" />
         <div className='delete-set'>Click to delete entire set <FontAwesomeIcon icon="fa-solid fa-trash-can" onClick={this.handleDeleteSet}/></div>
         {this.state.cards.map(card => <EditCard key={card._id} id={card._id} handleUpdateCard={this.handleUpdateCard} created_by={card.created_by} set_name={card.set_name} course={card.course} word={card.word} meaning={card.meaning} />)}

@@ -2,6 +2,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import React, { Component } from 'react';
 import GreenButton from '../helpers/greenButton';
+import LoadingPage from '../helpers/loadingPage';
 import PageTitler from '../helpers/pageTitler';
 
 
@@ -10,6 +11,7 @@ export default class ModifyCards extends Component {
     super(props)
 
     this.state = {
+      isLoading: true,
       cards: []
     }
 
@@ -21,21 +23,11 @@ export default class ModifyCards extends Component {
     const decoded = jwtDecode(token)
     const email = decoded.sub.email
 
-    // axios
-    // .get(`https://letsgovocab-backend.herokuapp.com/user-email/${email}`)
-    // .then(response => {
-    //   this.setState({
-    //     ...response.data
-    //   })
-    //   console.log(this.state)
-    // })
-    // .catch(error => {
-    //   "There was an error", error
-    // })
     axios
     .get(`https://letsgovocab-backend.herokuapp.com/sets-by-instructor/${email}`)
     .then(response =>
       this.setState({
+      isLoading: false,
       cards: [...response.data]
       })
     )
@@ -44,25 +36,10 @@ export default class ModifyCards extends Component {
     })
   }
 
-  // get this instructor's card sets
-  // getCards() {
-  //   axios
-  //   .get(`https://letsgovocab-backend.herokuapp.com/sets-by-instructor/${this.state.email}`)
-  //   .then(response =>
-  //     this.setState({
-  //     cards: [...response.data]
-  //     })
-  //   )
-  //   .catch(error => {
-  //     "Error in retrieving cards", error
-  //   })
-  // }
-
-
-
   render () {
     return (
       <div className='modify-cards'>
+        { this.state.isLoading === true ? <LoadingPage /> : null }
         <PageTitler className='modify-cards__page-titler' title="Modify Cards" />
         <div className="modify-cards__your-sets">Your sets</div>
         <div className='modify-cards__set-wrapper'>

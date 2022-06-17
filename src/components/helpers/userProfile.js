@@ -19,6 +19,20 @@ export default class UserProfile extends Component {
     });
   }
 
+  deleteUser(id) {
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*'
+      }
+    }
+    axios.delete(`https://letsgovocab-backend.herokuapp.com/delete-user/${id}`, config)
+    .catch(error => {
+      console.log("Error in deleting user - userProfile.js deleteUser(id)", error)
+    })
+    window.alert("User deleted from database. Search again to confirm.")
+  }
+
   saveChanges(id, data) {
     let config = {
       headers: {
@@ -26,7 +40,6 @@ export default class UserProfile extends Component {
         'Access-Control-Allow-Origin': '*'
         }
       }
-      console.log(data)
     axios.patch(`https://letsgovocab-backend.herokuapp.com/update-user/${id}`, JSON.stringify(data), config)
     .catch(error => {
       console.log("There was an error with the patch request to instructor", error)
@@ -65,7 +78,10 @@ export default class UserProfile extends Component {
               <option value="Instructor">Instructor</option>
               <option value="Administrator">Administrator</option>
             </select>
-          <div className="user-profile-info__edit-button" onClick={() => this.saveChanges(this.props.id, this.state)}><FontAwesomeIcon icon="pen-square" /></div>
+          <div className="user-profile-info__button-wrapper">
+            <div className="user-profile-info__edit-button" onClick={() => this.saveChanges(this.props.id, this.state)}><FontAwesomeIcon icon="pen-square" />Save</div>
+            <div className="user-profile-info__delete-button" onClick={() => this.deleteUser(this.props.id)}><FontAwesomeIcon icon="trash-can" />Delete</div>
+          </div>
         </div>
       </div>
     );
