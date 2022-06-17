@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
-import DialogBox from '../modals/dialogBoxModal';
-
 export default class UserProfile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      dialogBoxOpen: false,
-      user: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleModalOpen = this.handleModalOpen.bind(this)
-    this.handleModalClose = this.handleModalClose.bind(this)
     this.saveChanges = this.saveChanges.bind(this)
   }
 
@@ -25,14 +19,6 @@ export default class UserProfile extends Component {
     });
   }
 
-  removeKey(key) {
-    const newState = {...this.state};
-    delete newState[key];
-    this.setState({
-      ...newState
-    })
-  }
-
   saveChanges(id, data) {
     let config = {
       headers: {
@@ -40,33 +26,18 @@ export default class UserProfile extends Component {
         'Access-Control-Allow-Origin': '*'
         }
       }
-      this.setState({
-        user: {...data}
-      })
+      console.log(data)
     axios.patch(`https://letsgovocab-backend.herokuapp.com/update-user/${id}`, JSON.stringify(data), config)
     .catch(error => {
       console.log("There was an error with the patch request to instructor", error)
     })
-    this.handleModalOpen()
-  }
-
-  handleModalOpen() {
-    this.setState({
-      dialogBoxOpen: true
-    })
-  }
-
-  handleModalClose() {
-    this.setState({
-      dialogBoxOpen: false
-    })
+    window.alert("Database updated. Please confirm with a new search.")
   }
 
   render () {
     return (
       <div>
         <div className="user-profile-page-wrapper">
-        {this.state.dialogBoxOpen === true ? <DialogBox text="Changes uploaded and saved to database. Please confirm changes with another search." modalIsOpen={this.state.dialogBoxOpen} handleModalClose={this.handleModalClose}/> : null }
           <label className="user-profile-info__first-name-label" htmlFor="first-name">First Name</label>
             <input className="user-profile-info__first-name" defaultValue={this.props.first} name="first" onChange={this.handleChange} />
           <label className="user-profile-info__last-name-label" htmlFor="last-name">Last Name</label>
@@ -94,7 +65,7 @@ export default class UserProfile extends Component {
               <option value="Instructor">Instructor</option>
               <option value="Administrator">Administrator</option>
             </select>
-          <div className="user-profile-info__edit-button" onClick={() => this.saveChanges(this.props.id, this.state.user)}><FontAwesomeIcon icon="pen-square" /></div>
+          <div className="user-profile-info__edit-button" onClick={() => this.saveChanges(this.props.id, this.state)}><FontAwesomeIcon icon="pen-square" /></div>
         </div>
       </div>
     );
