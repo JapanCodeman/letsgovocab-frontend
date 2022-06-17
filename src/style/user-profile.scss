@@ -1,13 +1,12 @@
 .user-profile-page-wrapper {
+  width: 100vw;
+  overflow: hidden;
 
   input, select {
     height: 36px;
     font-size: 24px;
   }
 
-  display: grid;
-  grid-template-columns: calc(0.014 * 100vw) [first-s] 206px [first-e] 20px [last-s] 206px [last-e] 20px [email-s] 206px [email-e] 20px [logged-s] 150px [logged-e] 20px [course-s] 206px [course-e] 20px [role-s] 206px [role-e] 20px [edit-button-s] 96px [edit-button-e]; //1416
-  grid-template-rows: [label-s] 20px [label-e] 10px [value-s] 24px [value-e];
   background: rgb(10,36,0);
   background: linear-gradient(0deg, rgba(10,36,0,1) 0%, rgba(15,171,45,1) 100%);  
   color: white;
@@ -17,11 +16,13 @@
   height: auto;
   padding-bottom: 20px;
   margin-bottom: 20px;
-  width: auto;
+  width: calc(100vw - 20px);
 
 
   .user-profile-info {
-
+    display: grid;
+    grid-template-columns: 1fr [first-s] 206px [first-e] 20px [last-s] 206px [last-e] 20px [email-s] 206px [email-e] 20px [logged-s] 150px [logged-e] 20px [course-s] 206px [course-e] 20px [role-s] 206px [role-e] 20px [edit-button-s] 96px [edit-button-e] 1fr; //1416
+    grid-template-rows: [label-s] 20px [label-e] 10px [value-s] 24px [value-e];
     &__first-name-label {
       grid-column: first-s/first-e;
       grid-row: label-s/label-e;
@@ -127,9 +128,6 @@
 
 @media screen and (max-width: 1180px) and (orientation: landscape) {
   .user-profile-page-wrapper {
-    display: grid;
-    grid-template-columns: calc(.02 * 100vw) [first-and-logged-s] 206px [first-and-logged-e] 20px [last-and-course-s] 206px [last-and-course-e] 20px [email-and-role-s] 206px [email-and-role-e] 20px [edit-button-s] 40px [edit-button-e]; // 748
-    grid-template-rows: [label1-s] 20px [label1-e] 10px [value1-s] 24px [value1-e] 20px [label2-s] 20px [label2-e] 10px [value2-s] 20px [value2-e];
     background: rgb(10,36,0);
     background: linear-gradient(0deg, rgba(10,36,0,1) 0%, rgba(15,171,45,1) 100%);  
     color: white;
@@ -148,7 +146,9 @@
     }
   
     .user-profile-info {
-  
+      display: grid;
+      grid-template-columns: 1fr [first-and-logged-s] 206px [first-and-logged-e] 20px [last-and-course-s] 206px [last-and-course-e] 20px [email-and-role-s] 206px [email-and-role-e] 20px [edit-button-s] 40px [edit-button-e] 1fr; // 748
+      grid-template-rows: [label1-s] 20px [label1-e] 10px [value1-s] 24px [value1-e] 20px [label2-s] 20px [label2-e] 10px [value2-s] 20px [value2-e];
       &__first-name-label {
         grid-column: first-and-logged-s/first-and-logged-e;
         grid-row: label1-s/label1-e;
@@ -218,16 +218,33 @@
         grid-row: value2-s/value2-e;
       }
   
-      &__edit-button {
+      .user-profile-info__button-wrapper {
         grid-column: edit-button-s/edit-button-e;
-        grid-row: value-s/value-e;
-        text-align: right;
-        font-size: 64px;
-        transform: translate(50px, -75px);
-        cursor: pointer;
+        grid-row: label1-s/value2-e;
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
   
-        &:hover {
-          color: #6BD35F;
+        .user-profile-info__edit-button {
+          text-align: right;
+          font-size: 32px;
+          transform: translate(-10px, 10px);
+          cursor: pointer;
+    
+          &:hover {
+            color: #6BD35F;
+          }
+        }
+  
+        .user-profile-info__delete-button {
+          text-align: right;
+          font-size: 32px;
+          transform: translate(-10px, 10px);
+          cursor: pointer;
+    
+          &:hover {
+            color: red;
+          }
         }
       }
     }
@@ -236,28 +253,28 @@
 
 @media screen and (max-width: 1180px) and (orientation: portrait) {
   
-  input, select {
-    height: 20px;
-    font-size: 24px;
-  }
-
   .user-profile-page-wrapper {
-    display: grid;
-    grid-template-columns: 20px [first-and-logged-s] 206px [first-and-logged-e] 20px [last-and-course-s] 206px [last-and-course-e] 20px [email-and-role-s] 206px [email-and-role-e] 20px [edit-button-s] 40px [edit-button-e];
-    grid-template-rows: [label1-s] 20px [label1-e] 10px [value1-s] 24px [value1-e] 20px [label2-s] 20px [label2-e] 10px [value2-s] 20px [value2-e];
     background: rgb(10,36,0);
     background: linear-gradient(0deg, rgba(10,36,0,1) 0%, rgba(15,171,45,1) 100%);  
     color: white;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 18px;
-    height: 190px;
+    height: 150px;
     padding-bottom: 20px;
     margin-bottom: 20px;
-    width: 800px;
+    width: calc(100vw - 10px);
+    justify-content: center;
+
+    input, select {
+      height: 36px;
+      font-size: 24px;
+    }
   
     .user-profile-info {
-  
+      display: grid;
+      grid-template-columns: 1fr [first-and-logged-s] 206px [first-and-logged-e] 20px [last-and-course-s] 206px [last-and-course-e] 20px [email-and-role-s] 206px [email-and-role-e] 20px [edit-button-s] 40px [edit-button-e] 1fr; // 748
+      grid-template-rows: [label1-s] 20px [label1-e] 10px [value1-s] 24px [value1-e] 20px [label2-s] 20px [label2-e] 10px [value2-s] 20px [value2-e];
       &__first-name-label {
         grid-column: first-and-logged-s/first-and-logged-e;
         grid-row: label1-s/label1-e;
@@ -295,6 +312,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        width: 175px;
       }
   
       &__logged-status-label {
@@ -325,18 +343,36 @@
       &__role {
         grid-column: email-and-role-s/email-and-role-e;
         grid-row: value2-s/value2-e;
+        width: 175px;
       }
   
-      &__edit-button {
+      .user-profile-info__button-wrapper {
         grid-column: edit-button-s/edit-button-e;
-        grid-row: value-s/value-e;
-        text-align: right;
-        font-size: 64px;
-        transform: translate(35px, -75px);
-        cursor: pointer;
+        grid-row: label1-s/value2-e;
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
   
-        &:hover {
-          color: #6BD35F;
+        .user-profile-info__edit-button {
+          text-align: right;
+          font-size: 32px;
+          transform: translate(-40px, 10px);
+          cursor: pointer;
+    
+          &:hover {
+            color: #6BD35F;
+          }
+        }
+  
+        .user-profile-info__delete-button {
+          text-align: right;
+          font-size: 32px;
+          transform: translate(-40px, 10px);
+          cursor: pointer;
+    
+          &:hover {
+            color: red;
+          }
         }
       }
     }

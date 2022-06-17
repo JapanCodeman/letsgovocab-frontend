@@ -49,8 +49,8 @@ export default class UserProfile extends Component {
 
   render () {
     return (
-      <div>
-        <div className="user-profile-page-wrapper">
+      <div className="user-profile-page-wrapper">
+        <div className="user-profile-info">
           <label className="user-profile-info__first-name-label" htmlFor="first-name">First Name</label>
             <input className="user-profile-info__first-name" defaultValue={this.props.first} name="first" onChange={this.handleChange} />
           <label className="user-profile-info__last-name-label" htmlFor="last-name">Last Name</label>
