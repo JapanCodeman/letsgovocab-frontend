@@ -22,7 +22,7 @@ import Register from './login/register';
 import StudentProgress from './pages/studentProgress';
 import StudentStudy from './student/study';
 import StudySet from './student/studySet';
-// import StudentTest from './student/test'; //Future versions
+// import StudentTest from './student/test'; //Future versions yeah
 import TitlePage from './login/titlePage';
 import UserProfile from './helpers/userProfile';
 // import UserStatus from './admin/adminUserStatus'; //Future versions
